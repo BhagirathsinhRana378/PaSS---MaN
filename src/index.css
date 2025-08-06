@@ -1,0 +1,5 @@
+@import "tailwindcss";
+body::selection{
+    background-color: crimson;
+    color: white;
+}
