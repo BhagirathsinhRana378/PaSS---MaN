@@ -1,21 +1,25 @@
-import React from 'react'
+import React from 'react';
 
 const FOOTER = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-800 via-gray-800 to-gray-800 text-black py-6 text-center shadow-lg rounded-t-xl animate-fade-in mt-10">
-      <div className="max-w-2xl mx-auto px-4">
-        <h3 className="text-xl mb-1 flex items-center justify-center gap-1 text-white">
-          Created With <span role="img" aria-label="love" className="animate-pulse">❤️‍🔥</span>
-        </h3>
-        <h2 className="text-xl font-extrabold mb-3 bg-gradient-to-r from-yellow-100 via-red-400 to-pink-700 bg-clip-text text-transparent">
-          By Bhagirathsinh Rana
-        </h2>
-        <p className="text-sm text-white">
-          Pass/--Man encrypts and stores your passwords locally on your device using advanced encryption. Your passwords never leave your computer, giving you complete control over your data.
+    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-8 px-4 text-center mt-12">
+      <div className="max-w-3xl mx-auto space-y-3">
+        <div className="flex items-center justify-center gap-1.5 text-sm font-semibold text-slate-200">
+          <span>Crafted with</span>
+          <span role="img" aria-label="love" className="animate-pulse text-red-500">❤️‍🔥</span>
+          <span>By Bhagirathsinh Rana</span>
+        </div>
+
+        <p className="text-xs text-slate-400 max-w-xl mx-auto leading-relaxed">
+          <strong className="text-emerald-400 font-semibold">&lt;PaSS/--MaN&gt;</strong> keeps your sensitive passwords, secure text notes, cards, and keys completely offline in local storage. Your data never leaves your device.
         </p>
+
+        <div className="text-[11px] text-slate-400 pt-2">
+          &copy; {new Date().getFullYear()} Passman Security Vault. All rights reserved.
+        </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default FOOTER
+export default FOOTER;
