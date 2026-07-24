@@ -1,13 +1,14 @@
 import React from 'react';
 import {
-  IconShield,
   IconShieldCheck,
   IconSparkles,
   IconDownload,
   IconLock,
   IconKey,
-  IconCpu,
-  IconSearch
+  IconSearch,
+  IconShield,
+  IconSun,
+  IconMoon
 } from './Icons.jsx';
 
 const NavBar = ({
@@ -18,119 +19,116 @@ const NavBar = ({
   isLockedEnabled,
   onLockApp,
   isEncryptedMode,
-  onFocusSearch
+  onFocusSearch,
+  theme,
+  onToggleTheme
 }) => {
   return (
-    <nav className="glass-cyber sticky top-0 z-40 px-4 md:px-8 py-3 flex justify-between items-center shadow-2xl transition-all border-b border-cyan-500/20">
+    <nav className="h-16 bg-[var(--color-nav)] border-b border-[var(--color-[#dddddd])] text-[var(--color-text)] px-4 md:px-8 flex justify-between items-center sticky top-0 z-40 transition-colors">
       
       {/* Brand Identity */}
       <div className="flex items-center gap-3">
-        <div className="relative">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-teal-500 to-indigo-600 p-[1px] shadow-lg shadow-cyan-500/20">
-            <div className="w-full h-full bg-[#080c14] rounded-xl flex items-center justify-center">
-              <IconCpu className="w-5 h-5 text-cyan-400 animate-pulse" />
-            </div>
-          </div>
-          {isEncryptedMode && (
-            <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-[#080c14] rounded-full" title="AES-256-GCM Active" />
-          )}
+        <div className="w-8 h-8 rounded-lg bg-[var(--color-text)] text-[var(--color-nav)] flex items-center justify-center font-bold">
+          <IconShield className="w-5 h-5" />
         </div>
 
         <div>
-          <h1 className="text-xl md:text-2xl font-extrabold font-display-heading tracking-wider select-none text-slate-100 flex items-center gap-1">
-            <span className="text-cyan-400">&lt;</span>
+          <h1 className="text-lg md:text-xl font-display font-medium tracking-tight select-none text-[var(--color-text)]">
             <span>PaSS</span>
-            <span className="text-cyan-400">/</span>
-            <span className="text-indigo-400">-</span>
-            <span className="text-pink-500">-</span>
+            <span className="text-[var(--color-label)]">/</span>
+            <span>-</span>
+            <span className="text-[#aa2d00] dark:text-rose-400">-</span>
             <span>MaN</span>
-            <span className="text-cyan-400">&gt;</span>
           </h1>
-          <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest">TACTICAL VAULT</span>
-            <span>•</span>
-            <span className="text-emerald-400 font-semibold">{isEncryptedMode ? 'AES-256 ENCRYPTED' : 'LOCAL VAULT'}</span>
-          </div>
         </div>
       </div>
 
       {/* Action Controls */}
-      <div className="flex items-center gap-2 md:gap-3">
+      <div className="flex items-center gap-2 md:gap-3 text-xs">
         
-        {/* Search Shortcut Indicator */}
+        {/* Search HUD */}
         <button
           onClick={onFocusSearch}
-          className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 text-xs font-mono border border-slate-800 transition-colors"
-          title="Search Vault (Ctrl+K)"
+          className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-input)] text-[var(--color-label)] font-sans border border-[var(--color-[#dddddd])] transition-colors"
+          title="Search (Ctrl+K)"
         >
-          <IconSearch className="w-3.5 h-3.5 text-cyan-400" />
+          <IconSearch className="w-3.5 h-3.5 text-[var(--color-text)]" />
           <span>Search</span>
-          <kbd className="px-1.5 py-0.5 bg-slate-950 text-slate-400 rounded border border-slate-800 text-[10px]">Ctrl+K</kbd>
+          <kbd className="px-1.5 py-0.5 bg-[var(--color-card)] text-[var(--color-label)] rounded border border-[var(--color-[#dddddd])] text-[10px]">Ctrl+K</kbd>
         </button>
 
-        {/* Audit Button */}
+        {/* Audit Report */}
         <button
           onClick={onOpenAudit}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-mono font-semibold border border-cyan-500/30 transition-all shadow-sm"
-          title="Vault Security Health Audit"
+          className="btn-secondary py-1.5 px-3 text-xs"
+          title="Security Audit"
         >
-          <IconShieldCheck className="w-4 h-4 text-cyan-400" />
-          <span className="hidden sm:inline">Audit Report</span>
+          <IconShieldCheck className="w-4 h-4 text-emerald-400" />
+          <span className="hidden sm:inline">Audit</span>
         </button>
 
-        {/* Generator Button */}
+        {/* Generator */}
         <button
           onClick={onOpenGenerator}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 text-xs font-mono font-semibold border border-emerald-500/30 transition-all shadow-sm"
+          className="btn-secondary py-1.5 px-3 text-xs"
           title="Password Generator"
         >
-          <IconSparkles className="w-4 h-4 text-emerald-400 animate-pulse" />
+          <IconSparkles className="w-4 h-4 text-cyan-400" />
           <span className="hidden sm:inline">Generator</span>
         </button>
 
-        {/* Backup & Sync Button */}
+        {/* Backup & Sync */}
         <button
           onClick={onOpenBackup}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-indigo-400 text-xs font-mono font-semibold border border-indigo-500/30 transition-all shadow-sm"
+          className="btn-secondary py-1.5 px-3 text-xs"
           title="Backup & Sync"
         >
-          <IconDownload className="w-4 h-4 text-indigo-400" />
-          <span className="hidden sm:inline">Sync / Export</span>
+          <IconDownload className="w-4 h-4" />
+          <span className="hidden sm:inline">Sync</span>
         </button>
 
         {/* Lock Security Toggle */}
         {isLockedEnabled ? (
           <button
             onClick={onLockApp}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs font-mono font-semibold border border-emerald-500/40 transition-all shadow-sm"
+            className="btn-primary py-1.5 px-3 text-xs"
             title="Lock Vault"
           >
-            <IconLock className="w-4 h-4 text-emerald-400" />
+            <IconLock className="w-4 h-4" />
             <span className="hidden sm:inline">Lock</span>
           </button>
         ) : (
           <button
             onClick={onOpenLock}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-mono font-semibold border border-slate-700 transition-all shadow-sm"
-            title="Set Master PIN"
+            className="btn-secondary py-1.5 px-3 text-xs"
+            title="Set Master PIN Security"
           >
-            <IconKey className="w-4 h-4 text-slate-400" />
-            <span className="hidden sm:inline">PIN Security</span>
+            <IconKey className="w-4 h-4 text-[var(--color-label)]" />
+            <span className="hidden sm:inline">Set PIN</span>
           </button>
         )}
 
-        {/* GitHub Repository */}
+        {/* Theme Switcher Toggle */}
+        <button
+          onClick={onToggleTheme}
+          className="btn-secondary p-1.5 text-xs"
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {theme === 'dark' ? <IconSun className="w-4 h-4 text-amber-400" /> : <IconMoon className="w-4 h-4 text-[#181d26]" />}
+        </button>
+
+        {/* GitHub Link */}
         <a
-          className="flex items-center gap-2 p-2 md:px-3 md:py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-mono font-semibold border border-slate-800 transition-all"
+          className="btn-secondary py-1.5 px-3 text-xs"
           href="https://github.com/Bhagirathsinhrana378"
           target="_blank"
           rel="noopener noreferrer"
-          title="GitHub Repository"
+          title="GitHub Repo"
         >
-          <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-[var(--color-text)]" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.804 5.624-5.476 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
           </svg>
-          <span className="hidden md:inline">Repo</span>
+          <span className="hidden md:inline">GitHub</span>
         </a>
 
       </div>

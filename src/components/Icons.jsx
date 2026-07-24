@@ -202,16 +202,16 @@ export const IconCode = ({ className = "w-5 h-5", ...props }) => (
   </svg>
 );
 
-export const IconCpu = ({ className = "w-5 h-5", ...props }) => (
+export const IconSun = ({ className = "w-5 h-5", ...props }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <rect width="12" height="12" x="6" y="6" rx="2"/>
-    <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
   </svg>
 );
 
-export const IconZap = ({ className = "w-5 h-5", ...props }) => (
+export const IconMoon = ({ className = "w-5 h-5", ...props }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
   </svg>
 );
 

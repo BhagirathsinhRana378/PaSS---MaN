@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconLock, IconUnlock, IconKey, IconX, IconShield } from './Icons.jsx';
+import { IconLock, IconUnlock, IconKey, IconShield } from './Icons.jsx';
 import { toast } from 'react-toastify';
 
 const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveLock, onClose }) => {
@@ -36,17 +36,17 @@ const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveL
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-fade-in">
-      <div className="bg-slate-900 border border-slate-700 text-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative overflow-hidden text-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#181d26]/60 backdrop-blur-sm p-4 animate-fade-in">
+      <div className="bg-white border border-[#dddddd] text-[#181d26] rounded-xl shadow-2xl w-full max-w-sm p-6 relative overflow-hidden text-center">
         
-        <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl mx-auto flex items-center justify-center mb-4">
-          {isSettingLock ? <IconKey className="w-8 h-8 text-emerald-400" /> : <IconLock className="w-8 h-8 text-emerald-400" />}
+        <div className="w-14 h-14 bg-[#f8fafc] border border-[#dddddd] rounded-xl mx-auto flex items-center justify-center mb-4 text-[#181d26]">
+          {isSettingLock ? <IconKey className="w-7 h-7" /> : <IconLock className="w-7 h-7" />}
         </div>
 
-        <h3 className="text-xl font-extrabold text-slate-100 mb-1">
+        <h3 className="text-xl font-display font-medium text-[#181d26] mb-1">
           {isSettingLock ? 'Set App Security PIN' : 'PaSS---MaN Locked'}
         </h3>
-        <p className="text-xs text-slate-400 mb-6">
+        <p className="text-xs text-[#41454d] mb-6">
           {isSettingLock ? 'Create a local PIN code to protect your passwords on this device.' : 'Enter your Master PIN code to unlock your vault.'}
         </p>
 
@@ -59,7 +59,7 @@ const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveL
               value={pin}
               onChange={(e) => setPin(e.target.value)}
               placeholder="Enter PIN code"
-              className="w-full text-center tracking-widest text-2xl bg-slate-950 border border-slate-700 rounded-xl py-3 px-4 text-emerald-400 placeholder-slate-600 focus:outline-none focus:border-emerald-500 font-mono"
+              className="w-full text-center tracking-widest text-2xl bg-[#f8fafc] border border-[#dddddd] focus:border-[#181d26] rounded-lg py-2.5 px-4 text-[#181d26] placeholder-[#9297a0] focus:outline-none font-mono"
             />
           </div>
 
@@ -71,7 +71,7 @@ const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveL
                 value={confirmPin}
                 onChange={(e) => setConfirmPin(e.target.value)}
                 placeholder="Confirm PIN code"
-                className="w-full text-center tracking-widest text-2xl bg-slate-950 border border-slate-700 rounded-xl py-3 px-4 text-emerald-400 placeholder-slate-600 focus:outline-none focus:border-emerald-500 font-mono"
+                className="w-full text-center tracking-widest text-2xl bg-[#f8fafc] border border-[#dddddd] focus:border-[#181d26] rounded-lg py-2.5 px-4 text-[#181d26] placeholder-[#9297a0] focus:outline-none font-mono"
               />
             </div>
           )}
@@ -81,14 +81,14 @@ const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveL
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-sm transition-all"
+                className="flex-1 btn-airtable-secondary justify-center py-2.5"
               >
                 Cancel
               </button>
             )}
             <button
               type="submit"
-              className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-sm transition-all shadow-lg flex items-center justify-center gap-2"
+              className="flex-1 btn-airtable-primary justify-center py-2.5"
             >
               {isSettingLock ? <IconShield className="w-4 h-4" /> : <IconUnlock className="w-4 h-4" />}
               {isSettingLock ? 'Save PIN' : 'Unlock Vault'}
@@ -104,7 +104,7 @@ const MasterLockModal = ({ isOpen, isSettingLock, onUnlock, onSetLock, onRemoveL
               toast.info('Master Security PIN removed.');
               onClose();
             }}
-            className="mt-4 text-xs text-red-400 hover:text-red-300 underline"
+            className="mt-4 text-xs text-[#aa2d00] hover:underline"
           >
             Turn off PIN Security
           </button>
