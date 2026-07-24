@@ -1,22 +1,21 @@
 import React from 'react';
-import { IconCpu, IconShieldCheck } from './Icons.jsx';
+import { IconShieldCheck } from './Icons.jsx';
 
 const FOOTER = () => {
   return (
-    <footer className="glass-cyber border-t border-cyan-500/20 text-slate-400 py-8 px-4 text-center mt-12">
-      <div className="max-w-3xl mx-auto space-y-3 font-mono">
-        <div className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-200">
-          <IconCpu className="w-4 h-4 text-cyan-400" />
-          <span>Designed & Maintained by Bhagirathsinh Rana</span>
+    <footer className="bg-white border-t border-[#dddddd] text-[#41454d] py-12 px-4 text-center mt-16 font-sans">
+      <div className="max-w-3xl mx-auto space-y-3">
+        <div className="flex items-center justify-center gap-2 text-sm font-medium text-[#181d26]">
+          <span>Crafted with care by Bhagirathsinh Rana</span>
         </div>
 
-        <p className="text-xs text-slate-400 max-w-xl mx-auto leading-relaxed">
-          <strong className="text-cyan-400 font-bold">&lt;PaSS/--MaN&gt;</strong> operates completely client-side in offline storage with optional Web Crypto AES-256-GCM encryption. Zero trackers, zero cloud servers, 100% user privacy.
+        <p className="text-xs text-[#41454d] max-w-xl mx-auto leading-relaxed">
+          <strong className="text-[#181d26] font-medium">&lt;PaSS/--MaN&gt;</strong> is a zero-knowledge offline workflow password manager anchored on client-side AES-256-GCM encryption and local storage. No trackers, no telemetry.
         </p>
 
-        <div className="text-[11px] text-slate-500 pt-2 flex items-center justify-center gap-2">
-          <IconShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>&copy; {new Date().getFullYear()} Passman Cybernetic Security Terminal</span>
+        <div className="text-[11px] text-[#9297a0] pt-2 flex items-center justify-center gap-1.5">
+          <IconShieldCheck className="w-3.5 h-3.5 text-[#006400]" />
+          <span>&copy; {new Date().getFullYear()} Passman Security. All rights reserved.</span>
         </div>
       </div>
     </footer>

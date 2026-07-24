@@ -2,91 +2,152 @@
 
 @layer base {
   :root {
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --color-page: #090d16;
+    --color-nav: #0f172a;
+    --color-card: #1e293b;
+    --color-input: #0f172a;
+    --color-[#dddddd]: #334155;
+    --color-text: #f8fafc;
+    --color-label: #94a3b8;
+    --color-muted: #64748b;
+
+    --font-display: 'Inter Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   body {
-    background-color: #080c14;
-    color: #f1f5f9;
+    background-color: var(--color-page);
+    color: var(--color-text);
     font-family: var(--font-sans);
-    overflow-x: hidden;
+    letter-spacing: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  .font-mono-code {
-    font-family: var(--font-mono);
-  }
-
-  .font-display-heading {
+  h1, h2, h3, .font-display {
     font-family: var(--font-display);
+    color: var(--color-text);
   }
 }
 
-/* Glassmorphism & Cyber Utilities */
-.glass-cyber {
-  background: rgba(13, 18, 30, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 240, 255, 0.12);
+/* Light Theme Override */
+.light {
+  --color-page: #f8fafc;
+  --color-nav: #ffffff;
+  --color-card: #ffffff;
+  --color-input: #f8fafc;
+  --color-[#dddddd]: #dddddd;
+  --color-text: #181d26;
+  --color-label: #41454d;
+  --color-muted: #9297a0;
+
+  background-color: #f8fafc !important;
+  color: #181d26 !important;
 }
 
-.glass-cyber-card {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* Explicit Vault Component Helper Classes */
+.vault-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-[#dddddd]);
+  border-radius: 12px;
 }
 
-.glass-cyber-card:hover {
-  border-color: rgba(0, 240, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
+.vault-input {
+  background-color: var(--color-input);
+  border: 1px solid var(--color-[#dddddd]);
+  color: var(--color-text);
+  border-radius: 8px;
 }
 
-.border-cyber-glow {
-  border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+.vault-input::placeholder {
+  color: var(--color-muted);
 }
 
-/* Cybernetic Animations */
+.vault-input:focus {
+  outline: none;
+  border-color: #00f0ff;
+}
+
+.light .vault-input:focus {
+  border-color: #181d26;
+}
+
+.vault-label {
+  color: var(--color-label);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.vault-heading {
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: all 0.15s ease;
+}
+
+.light .btn-primary {
+  background-color: #181d26;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #e2e8f0;
+}
+
+.light .btn-primary:hover {
+  background-color: #0d1218;
+}
+
+.btn-secondary {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-[#dddddd]);
+  color: var(--color-text);
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #00f0ff;
+}
+
+.light .btn-secondary:hover {
+  border-color: #181d26;
+  background-color: #f8fafc;
+}
+
+/* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(1000%); }
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 3s infinite ease-in-out;
-}
-
-/* Tactical Scrollbar */
+/* Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #334155;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #00f0ff;
+.light ::-webkit-scrollbar-thumb {
+  background: #dddddd;
 }

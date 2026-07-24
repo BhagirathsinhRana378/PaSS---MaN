@@ -8,7 +8,7 @@ import MasterLockModal from './components/MasterLockModal.jsx';
 import VaultAuditModal from './components/VaultAuditModal.jsx';
 import { ToastContainer, Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { IconKey, IconShieldCheck, IconX } from './components/Icons.jsx';
+import { IconKey, IconX } from './components/Icons.jsx';
 
 function App() {
   const [isGeneratorOpen, setIsGeneratorOpen] = useState(false);
@@ -17,19 +17,36 @@ function App() {
   const [isAuditOpen, setIsAuditOpen] = useState(false);
   const [isPassphraseModalOpen, setIsPassphraseModalOpen] = useState(false);
 
-  // Master Encryption Passphrase
+  // Default Theme: 'dark'
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('passman_theme') || 'dark';
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+      root.classList.add('dark');
+    }
+    localStorage.setItem('passman_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   const [masterPassphrase, setMasterPassphrase] = useState('');
   const [inputPassphrase, setInputPassphrase] = useState('');
 
-  // Applied password state from generator modal
   const [appliedPassword, setAppliedPassword] = useState('');
 
-  // PIN Lock State
   const [masterPin, setMasterPin] = useState('');
   const [isLocked, setIsLocked] = useState(false);
   const [isSettingLock, setIsSettingLock] = useState(false);
 
-  // Vault Items in state for backup export/import & audit
   const [vaultItems, setVaultItems] = useState([]);
 
   useEffect(() => {
@@ -81,7 +98,7 @@ function App() {
     }
     setMasterPassphrase(inputPassphrase);
     sessionStorage.setItem('passman_session_passphrase', inputPassphrase);
-    toast.success('AES-256-GCM Encryption Key active for this session!');
+    toast.success('AES-256-GCM Encryption Key active!');
     setIsPassphraseModalOpen(false);
     setInputPassphrase('');
   };
@@ -101,7 +118,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden">
+    <div className="min-h-screen bg-[var(--color-page)] text-[var(--color-text)] font-sans flex flex-col justify-between relative selection:bg-cyan-500 selection:text-slate-950 transition-colors">
       
       <ToastContainer
         position="top-right"
@@ -113,13 +130,9 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme={theme === 'dark' ? 'dark' : 'light'}
         transition={Bounce}
       />
-
-      {/* Cybernetic Grid & Glow Accents */}
-      <div className="fixed top-0 left-1/3 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow" />
-      <div className="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow" />
 
       {/* Header */}
       <NavBar
@@ -133,9 +146,11 @@ function App() {
         isLockedEnabled={!!masterPin}
         onLockApp={() => setIsLocked(true)}
         isEncryptedMode={!!masterPassphrase}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
-      {/* Main Workspace */}
+      {/* Main Content */}
       <main className="flex-grow">
         <Manager
           onOpenGenerator={() => setIsGeneratorOpen(true)}
@@ -181,48 +196,48 @@ function App() {
 
       {/* Enable AES Encryption Passphrase Modal */}
       {isPassphraseModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-fade-in">
-          <div className="bg-[#0b101b] border border-cyan-500/30 text-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-2 text-cyan-400 font-extrabold font-display-heading text-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="vault-card text-[var(--color-text)] rounded-xl shadow-2xl w-full max-w-md p-6 relative">
+            <div className="flex justify-between items-center mb-4 pb-3 border-b border-[var(--color-[#dddddd])]">
+              <div className="flex items-center gap-2 font-display font-semibold text-lg">
                 <IconKey className="w-5 h-5 text-cyan-400" />
-                <span>AES-256-GCM Session Key</span>
+                <span className="vault-heading">AES-256-GCM Session Key</span>
               </div>
               <button
                 onClick={() => setIsPassphraseModalOpen(false)}
-                className="text-slate-400 hover:text-white bg-slate-800 p-1 rounded-full"
+                className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1 rounded-lg"
               >
                 <IconX className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-xs text-slate-400 font-mono mb-4 leading-relaxed">
-              Enter a master passphrase. Passman will derive a SHA-256 key using PBKDF2 (100k rounds) to encrypt sensitive data client-side before saving to localStorage.
+            <p className="text-xs text-[var(--color-label)] mb-4 leading-relaxed font-sans">
+              Enter a master passphrase. Passman will derive a SHA-256 key using PBKDF2 (100,000 iterations) to encrypt sensitive data client-side before saving to localStorage.
             </p>
 
-            <form onSubmit={handleSetMasterPassphrase} className="space-y-4 font-mono">
+            <form onSubmit={handleSetMasterPassphrase} className="space-y-4 font-sans">
               <input
                 type="password"
                 autoFocus
                 value={inputPassphrase}
                 onChange={(e) => setInputPassphrase(e.target.value)}
-                placeholder="Enter Master Encryption Passphrase"
-                className="w-full bg-[#080c14] border border-slate-800 focus:border-cyan-500 rounded-xl px-4 py-3 text-sm text-cyan-300 placeholder-slate-600 outline-none"
+                placeholder="Enter Master Passphrase"
+                className="w-full vault-input px-3.5 py-2.5 text-sm"
               />
 
-              <div className="flex gap-2 pt-2">
+              <div className="flex gap-2.5 pt-2">
                 <button
                   type="button"
                   onClick={() => setIsPassphraseModalOpen(false)}
-                  className="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs"
+                  className="flex-1 btn-secondary justify-center py-2.5 text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold rounded-xl text-xs shadow-lg shadow-cyan-500/20"
+                  className="flex-1 btn-primary justify-center py-2.5 text-xs"
                 >
-                  Activate Encryption
+                  Activate AES Key
                 </button>
               </div>
             </form>
