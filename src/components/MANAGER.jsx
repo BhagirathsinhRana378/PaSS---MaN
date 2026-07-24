@@ -26,7 +26,7 @@ import {
 } from './Icons.jsx';
 
 const getPasswordStrength = (pwd) => {
-  if (!pwd) return { label: 'None', score: 0, color: 'bg-slate-600', text: 'text-slate-400' };
+  if (!pwd) return { label: 'None', score: 0, text: 'text-[#5a5a5c]' };
   let score = 0;
   if (pwd.length >= 8) score++;
   if (pwd.length >= 12) score++;
@@ -34,9 +34,9 @@ const getPasswordStrength = (pwd) => {
   if (/[0-9]/.test(pwd)) score++;
   if (/[^A-Za-z0-9]/.test(pwd)) score++;
 
-  if (score <= 2) return { label: 'Weak', score, color: 'bg-rose-500', text: 'text-rose-400' };
-  if (score === 3 || score === 4) return { label: 'Medium', score, color: 'bg-amber-400', text: 'text-amber-400' };
-  return { label: 'Strong', score, color: 'bg-emerald-400', text: 'text-emerald-400' };
+  if (score <= 2) return { label: 'Weak', score, text: 'text-rose-400' };
+  if (score === 3 || score === 4) return { label: 'Medium', score, text: 'text-amber-400' };
+  return { label: 'Strong', score, text: 'text-[#00d4a4]' };
 };
 
 const normalizeVaultItem = (item) => {
@@ -334,42 +334,50 @@ const MANAGER = ({
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       
-      {/* Editorial Hero Band */}
-      <div className="text-center mb-16 py-4">
-        <h2 className="text-3xl md:text-5xl font-display font-normal tracking-tight mb-4 vault-heading">
-          Production security in <span className="underline underline-offset-8 decoration-[#aa2d00] dark:decoration-rose-400">prototype speed</span>.
+      {/* Mintlify Atmospheric Header */}
+      <div className="text-center mb-16 py-6">
+        <span className="mint-badge-green mb-3 inline-block">
+          ZERO-KNOWLEDGE VAULT SUITE
+        </span>
+        <h2 className="text-3xl md:text-5xl font-display font-semibold text-white tracking-tight mb-4">
+          Production security in <span className="text-[#00d4a4]">prototype speed</span>.
         </h2>
-        <p className="text-sm md:text-base max-w-2xl mx-auto font-sans leading-relaxed text-[var(--color-label)]">
-          Save passwords, secure text notes, cards, and keys in an editorial workspace anchored on client-side zero-knowledge privacy.
+        <p className="text-[#b3b3b3] text-sm md:text-base max-w-2xl mx-auto font-sans leading-relaxed">
+          Store logins, custom text notes, cards, and API secrets in a developer-grade security workspace anchored on client-side AES-256 privacy.
         </p>
       </div>
 
-      {/* Signature Coral Card Banner */}
-      <div className="card-signature-coral mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-xl">
+      {/* Mintlify Signature Feature Card */}
+      <div className="mint-card p-8 mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#00d4a4]/5 rounded-full blur-3xl pointer-events-none"></div>
+
         <div>
-          <span className="text-xs uppercase font-semibold text-white/80 tracking-wider">Security Architecture</span>
-          <h3 className="text-2xl md:text-3xl font-display font-medium text-white mt-1">
-            Client-Side AES-256 Vault Protection
+          <div className="flex items-center gap-2 mb-2">
+            <IconShield className="w-5 h-5 text-[#00d4a4]" />
+            <span className="text-xs uppercase font-semibold text-[#00d4a4] tracking-wider">Security Architecture</span>
+          </div>
+          <h3 className="text-xl md:text-2xl font-display font-semibold text-white">
+            Client-Side AES-256-GCM Vault Protection
           </h3>
-          <p className="text-sm text-white/90 mt-2 max-w-xl">
+          <p className="text-xs md:text-sm text-[#b3b3b3] mt-1.5 max-w-xl leading-relaxed">
             {masterPassphrase
-              ? 'AES-256-GCM Session Key is active. All sensitive fields are encrypted in your browser.'
-              : 'Your vault data remains 100% offline in local storage. Click below to enable AES session encryption.'}
+              ? 'AES-256-GCM Session Key is active. All sensitive fields are encrypted in-browser before writing to disk.'
+              : 'Your vault data remains 100% offline in local storage. Click below to activate AES session encryption.'}
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 shrink-0">
           <button
             onClick={onOpenAudit}
-            className="btn-secondary text-xs py-2.5 px-4 bg-white text-[#181d26] dark:bg-slate-900 dark:text-white"
+            className="btn-dark-pill text-xs py-2 px-4"
           >
-            <IconShieldCheck className="w-4 h-4 text-[#aa2d00] dark:text-emerald-400" /> Run Vault Audit
+            <IconShieldCheck className="w-4 h-4 text-[#00d4a4]" /> Run Vault Audit
           </button>
 
           {!masterPassphrase && onOpenPassphraseModal && (
             <button
               onClick={onOpenPassphraseModal}
-              className="btn-secondary text-xs py-2.5 px-4 bg-white text-[#181d26] dark:bg-slate-900 dark:text-white"
+              className="btn-mint-pill text-xs py-2 px-4"
             >
               Enable AES Encryption
             </button>
@@ -377,34 +385,32 @@ const MANAGER = ({
         </div>
       </div>
 
-      {/* Form Workspace Card */}
-      <div className="vault-card p-6 md:p-8 mb-12 shadow-sm transition-colors">
+      {/* Form Workspace */}
+      <div className="mint-card p-6 md:p-8 mb-12 shadow-sm">
         
-        <div className="flex justify-between items-center mb-6 pb-3 border-b border-[var(--color-[#dddddd])]">
-          <h3 className="font-display font-medium text-xl vault-heading flex items-center gap-2">
-            <IconPlus className="w-5 h-5" />
+        <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#1f1f1f]">
+          <h3 className="font-display font-semibold text-lg text-white flex items-center gap-2">
+            <IconPlus className="w-5 h-5 text-[#00d4a4]" />
             <span>{editingId ? 'Edit Vault Entry' : 'Create Vault Entry'}</span>
           </h3>
 
           {editingId && (
             <button
               onClick={resetForm}
-              className="text-xs font-medium px-3 py-1 btn-secondary"
+              className="btn-dark-outline text-xs py-1 px-3"
             >
               Cancel Edit
             </button>
           )}
         </div>
 
-        {/* Tab Selector */}
+        {/* Mintlify Pill Tabs */}
         <div className="flex flex-wrap gap-2 mb-6">
           <button
             type="button"
             onClick={() => setActiveType('login')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
-              activeType === 'login'
-                ? 'btn-primary'
-                : 'btn-secondary'
+            className={`px-4 py-2 text-xs font-semibold rounded-full transition-all ${
+              activeType === 'login' ? 'btn-mint-pill' : 'btn-dark-pill'
             }`}
           >
             Logins / Passwords
@@ -413,10 +419,8 @@ const MANAGER = ({
           <button
             type="button"
             onClick={() => setActiveType('note')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
-              activeType === 'note'
-                ? 'btn-primary'
-                : 'btn-secondary'
+            className={`px-4 py-2 text-xs font-semibold rounded-full transition-all ${
+              activeType === 'note' ? 'btn-mint-pill' : 'btn-dark-pill'
             }`}
           >
             Secure Text Note
@@ -425,10 +429,8 @@ const MANAGER = ({
           <button
             type="button"
             onClick={() => setActiveType('card')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
-              activeType === 'card'
-                ? 'btn-primary'
-                : 'btn-secondary'
+            className={`px-4 py-2 text-xs font-semibold rounded-full transition-all ${
+              activeType === 'card' ? 'btn-mint-pill' : 'btn-dark-pill'
             }`}
           >
             Payment Card
@@ -437,10 +439,8 @@ const MANAGER = ({
           <button
             type="button"
             onClick={() => setActiveType('wifi')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
-              activeType === 'wifi'
-                ? 'btn-primary'
-                : 'btn-secondary'
+            className={`px-4 py-2 text-xs font-semibold rounded-full transition-all ${
+              activeType === 'wifi' ? 'btn-mint-pill' : 'btn-dark-pill'
             }`}
           >
             Wi-Fi Info
@@ -449,21 +449,19 @@ const MANAGER = ({
           <button
             type="button"
             onClick={() => setActiveType('api')}
-            className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
-              activeType === 'api'
-                ? 'btn-primary'
-                : 'btn-secondary'
+            className={`px-4 py-2 text-xs font-semibold rounded-full transition-all ${
+              activeType === 'api' ? 'btn-mint-pill' : 'btn-dark-pill'
             }`}
           >
             API Key
           </button>
         </div>
 
-        {/* Inputs */}
-        <div className="space-y-4">
+        {/* Form Controls */}
+        <div className="space-y-4 font-sans">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="md:col-span-2">
-              <label className="block vault-label mb-1.5">Title / Identifier</label>
+              <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Title / Identifier</label>
               <input
                 type="text"
                 name="title"
@@ -473,24 +471,24 @@ const MANAGER = ({
                   activeType === 'login'
                     ? 'e.g. GitHub Account'
                     : activeType === 'note'
-                    ? 'e.g. Secret Recovery Code'
+                    ? 'e.g. Recovery Secret Key'
                     : activeType === 'card'
-                    ? 'e.g. Business Debit Card'
+                    ? 'e.g. Corporate Visa'
                     : activeType === 'wifi'
-                    ? 'e.g. Office Wi-Fi'
-                    : 'e.g. Stripe API Key'
+                    ? 'e.g. Office Wi-Fi 5G'
+                    : 'e.g. Stripe Production Key'
                 }
-                className="w-full vault-input px-3.5 py-2.5 text-sm"
+                className="w-full mint-input px-3.5 py-2.5 text-sm"
               />
             </div>
 
             <div>
-              <label className="block vault-label mb-1.5">Category</label>
+              <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Category</label>
               <select
                 name="category"
                 value={form.category}
                 onChange={handleInputChange}
-                className="w-full vault-input px-3 py-2.5 text-sm cursor-pointer"
+                className="w-full mint-input px-3 py-2.5 text-sm cursor-pointer"
               >
                 <option value="General">General</option>
                 <option value="Personal">Personal</option>
@@ -505,32 +503,32 @@ const MANAGER = ({
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block vault-label mb-1.5">Website URL</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Website URL</label>
                   <input
                     type="text"
                     name="site"
                     value={form.site}
                     onChange={handleInputChange}
                     placeholder="https://github.com"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block vault-label mb-1.5">Username / Email</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Username / Email</label>
                   <input
                     type="text"
                     name="username"
                     value={form.username}
                     onChange={handleInputChange}
                     placeholder="user@example.com"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="block vault-label">Password (Optional)</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3]">Password (Optional)</label>
                   {form.password && (
                     <span className={`text-xs font-mono font-medium ${strength.text}`}>
                       Strength: {strength.label}
@@ -544,14 +542,14 @@ const MANAGER = ({
                     value={form.password}
                     onChange={handleInputChange}
                     placeholder="••••••••"
-                    className="flex-1 vault-input px-3.5 py-2.5 text-sm font-mono"
+                    className="flex-1 mint-input px-3.5 py-2.5 text-sm font-mono"
                   />
                   <button
                     type="button"
                     onClick={onOpenGenerator}
-                    className="btn-secondary text-xs py-2 px-3 shrink-0"
+                    className="btn-dark-pill text-xs py-2 px-3 shrink-0"
                   >
-                    <IconSparkles className="w-4 h-4 text-cyan-400" /> Generate
+                    <IconSparkles className="w-4 h-4 text-[#00d4a4]" /> Generate
                   </button>
                 </div>
               </div>
@@ -560,14 +558,14 @@ const MANAGER = ({
 
           {activeType === 'note' && (
             <div>
-              <label className="block vault-label mb-1.5">Secure Text / Note Content</label>
+              <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Secure Text / Note Content</label>
               <textarea
                 name="notes"
                 rows="5"
                 value={form.notes}
                 onChange={handleInputChange}
                 placeholder="Write any custom text, recovery codes, instructions, or private notes..."
-                className="w-full vault-input p-3.5 text-sm font-sans leading-relaxed"
+                className="w-full mint-input p-3.5 text-sm font-sans leading-relaxed"
               />
             </div>
           )}
@@ -576,43 +574,43 @@ const MANAGER = ({
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block vault-label mb-1.5">Cardholder Name</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Cardholder Name</label>
                   <input
                     type="text"
                     name="cardHolder"
                     value={form.cardHolder}
                     onChange={handleInputChange}
                     placeholder="JOHN DOE"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block vault-label mb-1.5">Card Number</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Card Number</label>
                   <input
                     type="text"
                     name="cardNumber"
                     value={form.cardNumber}
                     onChange={handleInputChange}
                     placeholder="4532 •••• •••• 8910"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm font-mono"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm font-mono"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block vault-label mb-1.5">Expiry (MM/YY)</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Expiry (MM/YY)</label>
                   <input
                     type="text"
                     name="cardExpiry"
                     value={form.cardExpiry}
                     onChange={handleInputChange}
                     placeholder="12/28"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm font-mono"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block vault-label mb-1.5">CVV Code</label>
+                  <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">CVV Code</label>
                   <input
                     type="password"
                     name="cardCvv"
@@ -620,7 +618,7 @@ const MANAGER = ({
                     value={form.cardCvv}
                     onChange={handleInputChange}
                     placeholder="•••"
-                    className="w-full vault-input px-3.5 py-2.5 text-sm font-mono"
+                    className="w-full mint-input px-3.5 py-2.5 text-sm font-mono"
                   />
                 </div>
               </div>
@@ -630,25 +628,25 @@ const MANAGER = ({
           {activeType === 'wifi' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block vault-label mb-1.5">Network SSID</label>
+                <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Network SSID</label>
                 <input
                   type="text"
                   name="site"
                   value={form.site}
                   onChange={handleInputChange}
                   placeholder="Home_WiFi_5G"
-                  className="w-full vault-input px-3.5 py-2.5 text-sm"
+                  className="w-full mint-input px-3.5 py-2.5 text-sm"
                 />
               </div>
               <div>
-                <label className="block vault-label mb-1.5">Wi-Fi Password</label>
+                <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Wi-Fi Password</label>
                 <input
                   type="text"
                   name="password"
                   value={form.password}
                   onChange={handleInputChange}
                   placeholder="Wi-Fi Password"
-                  className="w-full vault-input px-3.5 py-2.5 text-sm font-mono"
+                  className="w-full mint-input px-3.5 py-2.5 text-sm font-mono"
                 />
               </div>
             </div>
@@ -657,25 +655,25 @@ const MANAGER = ({
           {activeType === 'api' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block vault-label mb-1.5">API Key Name</label>
+                <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">API Key Name</label>
                 <input
                   type="text"
                   name="username"
                   value={form.username}
                   onChange={handleInputChange}
                   placeholder="Stripe Secret Token"
-                  className="w-full vault-input px-3.5 py-2.5 text-sm"
+                  className="w-full mint-input px-3.5 py-2.5 text-sm"
                 />
               </div>
               <div>
-                <label className="block vault-label mb-1.5">Secret Key Value</label>
+                <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Secret Key Value</label>
                 <input
                   type="text"
                   name="apiKeySecret"
                   value={form.apiKeySecret}
                   onChange={handleInputChange}
                   placeholder="sk_live_51Nx..."
-                  className="w-full vault-input px-3.5 py-2.5 text-sm font-mono"
+                  className="w-full mint-input px-3.5 py-2.5 text-sm font-mono"
                 />
               </div>
             </div>
@@ -683,14 +681,14 @@ const MANAGER = ({
 
           {activeType !== 'note' && (
             <div>
-              <label className="block vault-label mb-1.5">Additional Notes</label>
+              <label className="block text-xs font-medium text-[#b3b3b3] mb-1.5">Additional Notes</label>
               <textarea
                 name="notes"
                 rows="2"
                 value={form.notes}
                 onChange={handleInputChange}
                 placeholder="Any extra comments..."
-                className="w-full vault-input p-3 text-xs"
+                className="w-full mint-input p-3 text-xs"
               />
             </div>
           )}
@@ -699,7 +697,7 @@ const MANAGER = ({
             <button
               type="button"
               onClick={handleSaveItem}
-              className="w-full md:w-auto btn-primary py-2.5 px-6"
+              className="w-full md:w-auto btn-mint-pill py-2.5 px-6"
             >
               <IconPlus className="w-4 h-4" />
               <span>{editingId ? 'Update Entry' : 'Save Vault Entry'}</span>
@@ -712,24 +710,24 @@ const MANAGER = ({
       {/* Controls Bar */}
       <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-8">
         <div className="relative w-full md:w-80">
-          <IconSearch className="w-4 h-4 text-[var(--color-label)] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <IconSearch className="w-4 h-4 text-[#5a5a5c] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             ref={searchInputRef}
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search vault (Ctrl+K)..."
-            className="w-full vault-input pl-10 pr-4 py-2 text-xs"
+            className="w-full mint-input pl-10 pr-4 py-2 text-xs"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
           <button
             onClick={() => setFilterType('all')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               filterType === 'all'
-                ? 'btn-primary'
-                : 'btn-secondary'
+                ? 'btn-mint-pill py-1.5 px-3.5'
+                : 'btn-dark-pill py-1.5 px-3.5'
             }`}
           >
             All ({passwordArray.length})
@@ -737,8 +735,8 @@ const MANAGER = ({
 
           <button
             onClick={() => setFilterType('favorites')}
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              filterType === 'favorites' ? 'bg-[#f4d35e] text-[#181d26]' : 'btn-secondary'
+            className={`flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
+              filterType === 'favorites' ? 'bg-[#f4d35e] text-[#0a0a0a]' : 'btn-dark-pill py-1.5 px-3.5'
             }`}
           >
             <IconStar className="w-3.5 h-3.5" fill={filterType === 'favorites' ? 'currentColor' : 'none'} /> Favorites
@@ -746,10 +744,10 @@ const MANAGER = ({
 
           <button
             onClick={() => setFilterType('login')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               filterType === 'login'
-                ? 'btn-primary'
-                : 'btn-secondary'
+                ? 'btn-mint-pill py-1.5 px-3.5'
+                : 'btn-dark-pill py-1.5 px-3.5'
             }`}
           >
             Logins
@@ -757,10 +755,10 @@ const MANAGER = ({
 
           <button
             onClick={() => setFilterType('note')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               filterType === 'note'
-                ? 'btn-primary'
-                : 'btn-secondary'
+                ? 'btn-mint-pill py-1.5 px-3.5'
+                : 'btn-dark-pill py-1.5 px-3.5'
             }`}
           >
             Notes
@@ -768,26 +766,26 @@ const MANAGER = ({
 
           <button
             onClick={() => setFilterType('card')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               filterType === 'card'
-                ? 'btn-primary'
-                : 'btn-secondary'
+                ? 'btn-mint-pill py-1.5 px-3.5'
+                : 'btn-dark-pill py-1.5 px-3.5'
             }`}
           >
             Cards
           </button>
 
-          <div className="ml-auto flex items-center bg-[var(--color-card)] border border-[var(--color-[#dddddd])] rounded-md p-1">
+          <div className="ml-auto flex items-center bg-[#1c1c1e] border border-[#1f1f1f] rounded-full p-1">
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-1.5 rounded ${viewMode === 'grid' ? 'btn-primary' : 'text-[var(--color-label)]'}`}
+              className={`p-1.5 rounded-full ${viewMode === 'grid' ? 'bg-[#00d4a4] text-[#0a0a0a]' : 'text-[#b3b3b3]'}`}
               title="Grid View"
             >
               <IconGrid className="w-4 h-4" />
             </button>
             <button
               onClick={() => setViewMode('table')}
-              className={`p-1.5 rounded ${viewMode === 'table' ? 'btn-primary' : 'text-[var(--color-label)]'}`}
+              className={`p-1.5 rounded-full ${viewMode === 'table' ? 'bg-[#00d4a4] text-[#0a0a0a]' : 'text-[#b3b3b3]'}`}
               title="Table View"
             >
               <IconList className="w-4 h-4" />
@@ -796,12 +794,12 @@ const MANAGER = ({
         </div>
       </div>
 
-      {/* List Display */}
+      {/* Grid Display */}
       {displayItems.length === 0 ? (
-        <div className="vault-card p-12 text-center my-6">
-          <IconShield className="w-10 h-10 text-[var(--color-label)] mx-auto mb-3" />
-          <h3 className="text-lg font-display font-medium text-[var(--color-text)] mb-1">No Entries Found</h3>
-          <p className="text-[var(--color-label)] text-xs">
+        <div className="mint-card p-12 text-center my-6">
+          <IconShield className="w-10 h-10 text-[#5a5a5c] mx-auto mb-3" />
+          <h3 className="text-lg font-display font-semibold text-white mb-1">No Entries Found</h3>
+          <p className="text-[#b3b3b3] text-xs">
             {searchQuery ? 'No items match search query.' : 'Create your first login, note, or card above!'}
           </p>
         </div>
@@ -812,12 +810,12 @@ const MANAGER = ({
             return (
               <div
                 key={item.id}
-                className="vault-card p-5 shadow-sm flex flex-col justify-between transition-all group animate-fade-in"
+                className="mint-card p-5 flex flex-col justify-between transition-all group hover:border-[#00d4a4]/50 animate-fade-in"
               >
                 <div>
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-2.5 overflow-hidden">
-                      <div className="w-8 h-8 rounded-md bg-[var(--color-input)] border border-[var(--color-[#dddddd])] flex items-center justify-center text-[var(--color-text)] shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-[#1c1c1e] border border-[#1f1f1f] flex items-center justify-center text-[#00d4a4] shrink-0">
                         {item.type === 'login' && <IconKey className="w-4 h-4" />}
                         {item.type === 'note' && <IconFileText className="w-4 h-4" />}
                         {item.type === 'card' && <IconCreditCard className="w-4 h-4" />}
@@ -825,8 +823,8 @@ const MANAGER = ({
                         {item.type === 'api' && <IconCode className="w-4 h-4" />}
                       </div>
                       <div className="truncate">
-                        <h4 className="font-display font-medium text-[var(--color-text)] text-base truncate">{item.title}</h4>
-                        <span className="inline-block px-2 py-0.5 bg-[#f5e9d4] dark:bg-slate-700 text-[#181d26] dark:text-slate-200 text-[10px] font-medium rounded">
+                        <h4 className="font-display font-semibold text-white text-base truncate">{item.title}</h4>
+                        <span className="mint-badge-green text-[10px] inline-block">
                           {item.category || item.type}
                         </span>
                       </div>
@@ -834,29 +832,29 @@ const MANAGER = ({
 
                     <button
                       onClick={() => toggleFavorite(item.id)}
-                      className="text-[#9297a0] hover:text-[#d9a441] p-1"
+                      className="text-[#5a5a5c] hover:text-[#f4d35e] p-1"
                     >
                       <IconStar
-                        className={`w-4 h-4 ${item.isFavorite ? 'text-[#d9a441]' : ''}`}
+                        className={`w-4 h-4 ${item.isFavorite ? 'text-[#f4d35e]' : ''}`}
                         fill={item.isFavorite ? 'currentColor' : 'none'}
                       />
                     </button>
                   </div>
 
-                  <div className="space-y-2 text-xs text-[var(--color-text)] py-2">
+                  <div className="space-y-2 text-xs py-2 font-sans">
                     {item.site && (
-                      <div className="flex items-center justify-between bg-[var(--color-input)] p-2 rounded-md border border-[var(--color-[#dddddd])]">
+                      <div className="flex items-center justify-between mint-card-code p-2">
                         <a
                           href={item.site.startsWith('http') ? item.site : `https://${item.site}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-cyan-400 hover:underline flex items-center gap-1 truncate max-w-[200px]"
+                          className="text-[#00d4a4] hover:underline flex items-center gap-1 truncate max-w-[200px]"
                         >
                           {item.site} <IconExternalLink className="w-3 h-3 shrink-0" />
                         </a>
                         <button
                           onClick={() => copyToClipboard(item.site, 'URL')}
-                          className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1"
+                          className="text-[#b3b3b3] hover:text-white p-1"
                         >
                           <IconCopy className="w-3.5 h-3.5" />
                         </button>
@@ -864,11 +862,11 @@ const MANAGER = ({
                     )}
 
                     {item.username && (
-                      <div className="flex items-center justify-between bg-[var(--color-input)] p-2 rounded-md border border-[var(--color-[#dddddd])]">
-                        <span className="text-[var(--color-text)] truncate">{item.username}</span>
+                      <div className="flex items-center justify-between mint-card-code p-2">
+                        <span className="text-white truncate">{item.username}</span>
                         <button
                           onClick={() => copyToClipboard(item.username, 'Username')}
-                          className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1"
+                          className="text-[#b3b3b3] hover:text-white p-1"
                         >
                           <IconCopy className="w-3.5 h-3.5" />
                         </button>
@@ -876,20 +874,20 @@ const MANAGER = ({
                     )}
 
                     {item.password && (
-                      <div className="flex items-center justify-between bg-[var(--color-input)] p-2 rounded-md border border-[var(--color-[#dddddd])] font-mono">
-                        <span className="text-[var(--color-text)]">
+                      <div className="flex items-center justify-between mint-card-code p-2 font-mono">
+                        <span className="text-[#00d4a4]">
                           {isVisible ? item.password : '••••••••••••'}
                         </span>
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => togglePasswordVisibility(item.id)}
-                            className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1"
+                            className="text-[#b3b3b3] hover:text-white p-1"
                           >
                             {isVisible ? <IconEyeOff className="w-3.5 h-3.5" /> : <IconEye className="w-3.5 h-3.5" />}
                           </button>
                           <button
                             onClick={() => copyToClipboard(item.password, 'Password')}
-                            className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1"
+                            className="text-[#b3b3b3] hover:text-white p-1"
                           >
                             <IconCopy className="w-3.5 h-3.5" />
                           </button>
@@ -898,22 +896,22 @@ const MANAGER = ({
                     )}
 
                     {item.type === 'note' && item.notes && (
-                      <div className="bg-[var(--color-input)] p-3 rounded-md border border-[var(--color-[#dddddd])] text-[var(--color-text)] text-xs whitespace-pre-wrap leading-relaxed max-h-36 overflow-y-auto">
+                      <div className="mint-card-code p-3 text-white text-xs whitespace-pre-wrap leading-relaxed max-h-36 overflow-y-auto font-mono">
                         {item.notes}
                       </div>
                     )}
 
                     {item.type === 'card' && (
-                      <div className="space-y-1 bg-[var(--color-input)] p-2.5 rounded-md border border-[var(--color-[#dddddd])] text-xs font-mono">
-                        <div className="flex justify-between text-[var(--color-label)]">
+                      <div className="space-y-1 mint-card-code p-2.5 text-xs font-mono">
+                        <div className="flex justify-between text-[#b3b3b3]">
                           <span>{item.cardHolder || 'CARD HOLDER'}</span>
                           <span>{item.cardExpiry}</span>
                         </div>
-                        <div className="flex justify-between items-center text-[var(--color-text)] font-semibold tracking-wider pt-1">
+                        <div className="flex justify-between items-center text-white font-semibold tracking-wider pt-1">
                           <span>{isVisible ? item.cardNumber : '•••• •••• •••• ' + (item.cardNumber.slice(-4) || '••••')}</span>
                           <button
                             onClick={() => copyToClipboard(item.cardNumber, 'Card Number')}
-                            className="text-[var(--color-label)] hover:text-[var(--color-text)]"
+                            className="text-[#b3b3b3] hover:text-white"
                           >
                             <IconCopy className="w-3.5 h-3.5" />
                           </button>
@@ -922,13 +920,13 @@ const MANAGER = ({
                     )}
 
                     {item.type === 'api' && item.apiKeySecret && (
-                      <div className="flex items-center justify-between bg-[var(--color-input)] p-2 rounded-md border border-[var(--color-[#dddddd])] font-mono">
-                        <span className="text-[var(--color-text)] text-xs truncate max-w-[180px]">
+                      <div className="flex items-center justify-between mint-card-code p-2 font-mono">
+                        <span className="text-[#00d4a4] text-xs truncate max-w-[180px]">
                           {isVisible ? item.apiKeySecret : item.apiKeySecret.slice(0, 4) + '••••••••'}
                         </span>
                         <button
                           onClick={() => copyToClipboard(item.apiKeySecret, 'API Secret')}
-                          className="text-[var(--color-label)] hover:text-[var(--color-text)] p-1"
+                          className="text-[#b3b3b3] hover:text-white p-1"
                         >
                           <IconCopy className="w-3.5 h-3.5" />
                         </button>
@@ -936,22 +934,22 @@ const MANAGER = ({
                     )}
 
                     {item.notes && item.type !== 'note' && (
-                      <p className="text-[11px] text-[var(--color-label)] italic line-clamp-2 pt-1">{item.notes}</p>
+                      <p className="text-[11px] text-[#b3b3b3] italic line-clamp-2 pt-1">{item.notes}</p>
                     )}
 
                   </div>
                 </div>
 
-                <div className="flex items-center justify-end gap-2 pt-3 border-t border-[var(--color-[#dddddd])] mt-2">
+                <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#1f1f1f] mt-2">
                   <button
                     onClick={() => handleEdit(item)}
-                    className="p-1 text-[var(--color-label)] hover:text-[var(--color-text)]"
+                    className="p-1 text-[#b3b3b3] hover:text-white"
                   >
                     <IconEdit className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setDeleteConfirmId(item.id)}
-                    className="p-1 text-[var(--color-label)] hover:text-rose-400"
+                    className="p-1 text-[#b3b3b3] hover:text-rose-400"
                   >
                     <IconTrash className="w-4 h-4" />
                   </button>
@@ -961,9 +959,9 @@ const MANAGER = ({
           })}
         </div>
       ) : (
-        <div className="vault-card overflow-x-auto shadow-sm mb-16">
-          <table className="w-full text-left text-xs md:text-sm text-[var(--color-text)]">
-            <thead className="bg-[var(--color-input)] text-[var(--color-text)] font-medium border-b border-[var(--color-[#dddddd])]">
+        <div className="mint-card overflow-x-auto shadow-sm mb-16">
+          <table className="w-full text-left text-xs md:text-sm text-white">
+            <thead className="bg-[#1c1c1e] text-[#b3b3b3] font-medium border-b border-[#1f1f1f]">
               <tr>
                 <th className="py-3 px-4">Title / Site</th>
                 <th className="py-3 px-4">Username / Card</th>
@@ -971,19 +969,19 @@ const MANAGER = ({
                 <th className="py-3 px-4 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--color-[#dddddd])]">
+            <tbody className="divide-y divide-[#1f1f1f]">
               {displayItems.map((item) => {
                 const isVisible = visiblePasswords[item.id];
                 return (
-                  <tr key={item.id} className="hover:bg-[var(--color-input)] transition-colors">
-                    <td className="py-3 px-4 font-medium text-[var(--color-text)]">
+                  <tr key={item.id} className="hover:bg-[#1c1c1e] transition-colors">
+                    <td className="py-3 px-4 font-medium text-white">
                       <div className="flex items-center gap-2">
-                        <span>
-                          {item.type === 'login' && <IconKey className="w-4 h-4 text-[var(--color-text)]" />}
-                          {item.type === 'note' && <IconFileText className="w-4 h-4 text-[var(--color-text)]" />}
-                          {item.type === 'card' && <IconCreditCard className="w-4 h-4 text-[var(--color-text)]" />}
-                          {item.type === 'wifi' && <IconWifi className="w-4 h-4 text-[var(--color-text)]" />}
-                          {item.type === 'api' && <IconCode className="w-4 h-4 text-[var(--color-text)]" />}
+                        <span className="text-[#00d4a4]">
+                          {item.type === 'login' && <IconKey className="w-4 h-4" />}
+                          {item.type === 'note' && <IconFileText className="w-4 h-4" />}
+                          {item.type === 'card' && <IconCreditCard className="w-4 h-4" />}
+                          {item.type === 'wifi' && <IconWifi className="w-4 h-4" />}
+                          {item.type === 'api' && <IconCode className="w-4 h-4" />}
                         </span>
                         <div>
                           <div>{item.title}</div>
@@ -992,7 +990,7 @@ const MANAGER = ({
                               href={item.site.startsWith('http') ? item.site : `https://${item.site}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[11px] text-cyan-400 hover:underline flex items-center gap-1"
+                              className="text-[11px] text-[#00d4a4] hover:underline flex items-center gap-1"
                             >
                               {item.site}
                             </a>
@@ -1000,28 +998,28 @@ const MANAGER = ({
                         </div>
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-[var(--color-text)]">
+                    <td className="py-3 px-4 text-[#b3b3b3]">
                       {item.username || item.cardHolder || '—'}
                     </td>
-                    <td className="py-3 px-4 font-mono text-[var(--color-text)]">
+                    <td className="py-3 px-4 font-mono text-[#00d4a4]">
                       {item.password ? (
                         <div className="flex items-center gap-2">
                           <span>{isVisible ? item.password : '••••••••'}</span>
                           <button
                             onClick={() => togglePasswordVisibility(item.id)}
-                            className="text-[var(--color-label)] hover:text-[var(--color-text)]"
+                            className="text-[#b3b3b3] hover:text-white"
                           >
                             {isVisible ? <IconEyeOff className="w-3.5 h-3.5" /> : <IconEye className="w-3.5 h-3.5" />}
                           </button>
                           <button
                             onClick={() => copyToClipboard(item.password, 'Password')}
-                            className="text-[var(--color-label)] hover:text-[var(--color-text)]"
+                            className="text-[#b3b3b3] hover:text-white"
                           >
                             <IconCopy className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       ) : item.type === 'note' ? (
-                        <span className="text-[var(--color-label)] truncate max-w-[150px] inline-block">{item.notes}</span>
+                        <span className="text-[#b3b3b3] truncate max-w-[150px] inline-block font-mono">{item.notes}</span>
                       ) : item.type === 'card' ? (
                         <span>{item.cardNumber}</span>
                       ) : (
@@ -1032,13 +1030,13 @@ const MANAGER = ({
                       <div className="flex items-center justify-center gap-2">
                         <button
                           onClick={() => handleEdit(item)}
-                          className="p-1 text-[var(--color-label)] hover:text-[var(--color-text)]"
+                          className="p-1 text-[#b3b3b3] hover:text-white"
                         >
                           <IconEdit className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => setDeleteConfirmId(item.id)}
-                          className="p-1 text-[var(--color-label)] hover:text-rose-400"
+                          className="p-1 text-[#b3b3b3] hover:text-rose-400"
                         >
                           <IconTrash className="w-4 h-4" />
                         </button>
@@ -1052,23 +1050,23 @@ const MANAGER = ({
         </div>
       )}
 
-      {/* Delete Modal */}
+      {/* Delete Confirmation Modal */}
       {deleteConfirmId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fade-in">
-          <div className="vault-card rounded-xl p-6 max-w-sm w-full text-center shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="mint-card rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl">
             <IconTrash className="w-10 h-10 text-rose-500 mx-auto mb-3" />
-            <h4 className="text-lg font-display font-medium text-[var(--color-text)] mb-1">Delete Vault Entry?</h4>
-            <p className="text-xs text-[var(--color-label)] mb-5">This action cannot be undone.</p>
+            <h4 className="text-lg font-display font-semibold text-white mb-1">Delete Vault Entry?</h4>
+            <p className="text-xs text-[#b3b3b3] mb-5">This action cannot be undone.</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setDeleteConfirmId(null)}
-                className="flex-1 btn-secondary justify-center py-2 text-xs"
+                className="flex-1 btn-dark-outline justify-center py-2 text-xs"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteConfirmed}
-                className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium rounded-xl text-xs py-2 shadow-md transition-colors"
+                className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium rounded-full text-xs py-2 shadow-md transition-colors"
               >
                 Delete
               </button>

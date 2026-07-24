@@ -1,22 +1,66 @@
 import React from 'react';
-import { IconShieldCheck } from './Icons.jsx';
+import { IconShield } from './Icons.jsx';
 
 const FOOTER = () => {
   return (
-    <footer className="bg-white border-t border-[#dddddd] text-[#41454d] py-12 px-4 text-center mt-16 font-sans">
-      <div className="max-w-3xl mx-auto space-y-3">
-        <div className="flex items-center justify-center gap-2 text-sm font-medium text-[#181d26]">
-          <span>Crafted with care by Bhagirathsinh Rana</span>
+    <footer className="bg-[#0a0a0a] border-t border-[#1f1f1f] text-[#b3b3b3] py-12 px-6 md:px-12 font-sans text-xs">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        
+        {/* Brand Column */}
+        <div className="space-y-3 md:col-span-1">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-[#00d4a4] text-[#0a0a0a] flex items-center justify-center font-bold">
+              <IconShield className="w-3.5 h-3.5" />
+            </div>
+            <span className="font-display font-semibold text-white text-base">PaSS-MaN</span>
+          </div>
+          <p className="text-xs text-[#5a5a5c] leading-relaxed">
+            Zero-knowledge, client-side encrypted developer vault suite. Stored 100% locally on your machine.
+          </p>
         </div>
 
-        <p className="text-xs text-[#41454d] max-w-xl mx-auto leading-relaxed">
-          <strong className="text-[#181d26] font-medium">&lt;PaSS/--MaN&gt;</strong> is a zero-knowledge offline workflow password manager anchored on client-side AES-256-GCM encryption and local storage. No trackers, no telemetry.
+        {/* Column 1: Features */}
+        <div className="space-y-2">
+          <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-3">Features</h4>
+          <ul className="space-y-2">
+            <li><a href="#vault" className="hover:text-[#00d4a4] transition-colors">AES-256 Vault</a></li>
+            <li><a href="#notes" className="hover:text-[#00d4a4] transition-colors">Secure Text Notes</a></li>
+            <li><a href="#generator" className="hover:text-[#00d4a4] transition-colors">Password Generator</a></li>
+            <li><a href="#audit" className="hover:text-[#00d4a4] transition-colors">Security Audit</a></li>
+          </ul>
+        </div>
+
+        {/* Column 2: Security */}
+        <div className="space-y-2">
+          <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-3">Security</h4>
+          <ul className="space-y-2">
+            <li><span className="text-white">Web Crypto API</span></li>
+            <li><span className="text-white">PBKDF2 Derivation</span></li>
+            <li><span className="text-white">100,000 Iterations</span></li>
+            <li><span className="text-white">Zero Cloud Sync</span></li>
+          </ul>
+        </div>
+
+        {/* Column 3: Developer */}
+        <div className="space-y-2">
+          <h4 className="font-semibold text-white text-xs uppercase tracking-wider mb-3">Developer</h4>
+          <ul className="space-y-2">
+            <li><a href="https://github.com/Bhagirathsinhrana378" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d4a4] transition-colors">GitHub Repository</a></li>
+            <li><span className="text-[#5a5a5c]">Hosted on gh-pages</span></li>
+            <li><span className="text-[#5a5a5c]">MIT Open Source</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div className="max-w-6xl mx-auto pt-6 border-t border-[#1f1f1f] flex flex-col md:flex-row justify-between items-center gap-4 text-[#5a5a5c]">
+        <p>© {new Date().getFullYear()} PaSS-MaN Security Suite. All rights reserved.</p>
+        <p className="flex items-center gap-2">
+          <span>Designed with</span>
+          <span className="text-[#00d4a4] font-semibold">Mintlify</span>
+          <span>&</span>
+          <span className="text-white font-semibold">Google Antigravity</span>
         </p>
-
-        <div className="text-[11px] text-[#9297a0] pt-2 flex items-center justify-center gap-1.5">
-          <IconShieldCheck className="w-3.5 h-3.5 text-[#006400]" />
-          <span>&copy; {new Date().getFullYear()} Passman Security. All rights reserved.</span>
-        </div>
       </div>
     </footer>
   );
