@@ -144,7 +144,7 @@ function App() {
         />
       </main>
 
-      {/* Mintlify Footer */}
+      {/* Footer */}
       <Footer />
 
       {/* Modals */}

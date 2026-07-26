@@ -54,8 +54,8 @@ const FOOTER = () => {
       <div className="max-w-6xl mx-auto pt-6 border-t border-[#1f1f1f] flex flex-col md:flex-row justify-between items-center gap-4 text-[#5a5a5c]">
         <p>© {new Date().getFullYear()} PaSS-MaN Security Suite. All rights reserved.</p>
         <p className="flex items-center gap-2">
-          <span>Designed with</span>
-          <span className="text-[#00d4a4] font-semibold">Mintlify</span>
+          <span>Made by</span>
+          <span className="text-[#00d4a4] font-semibold">Bhagirayhsinh Rana</span>
           <span>&</span>
           <span className="text-white font-semibold">Google Antigravity</span>
         </p>

@@ -1,7 +1,7 @@
 ---
 version: alpha
-name: Mintlify-design-analysis
-description: Mintlify presents documentation infrastructure with a dual-mode aesthetic — atmospheric sky-gradient marketing heroes (cloud illustration backdrops, soft cream-to-blue washes) paired with dense developer-grade documentation surfaces. The system uses Inter for UI prose, Geist Mono for code, and a signature Mintlify green ({colors.brand-green}) reserved for accent CTAs and active states. Black-pill primary buttons dominate marketing, white-on-dark inversions appear on dark hero bands, and a 3-column documentation layout (sidebar / prose / TOC) anchors the developer experience. Coverage spans homepage, startups program, pricing comparison, and the live tabs documentation page.
+name: Dark-design-analysis
+description: The system presents documentation and application infrastructure with a dual-mode aesthetic — atmospheric sky-gradient marketing heroes (cloud illustration backdrops, soft cream-to-blue washes) paired with dense developer-grade surfaces. The system uses Inter for UI prose, Geist Mono for code, and a signature mint green ({colors.brand-green}) reserved for accent CTAs and active states. Black-pill primary buttons dominate marketing, white-on-dark inversions appear on dark hero bands, and a 3-column documentation layout (sidebar / prose / TOC) anchors the developer experience. Coverage spans homepage, startups program, pricing comparison, and the live tabs documentation page.
 
 colors:
   primary: "#0a0a0a"
@@ -452,13 +452,13 @@ components:
 
 ## Overview
 
-Mintlify positions itself at the intersection of polished marketing presentation and developer-grade documentation density. The home and startups pages open with cinematic atmospheric heroes — soft sky-gradient backdrops with cloud illustrations on the homepage, dark teal-to-mint gradients with a rocket launch on the startups page — that feel more like a SaaS landing aesthetic than a developer tool. Then the deeper surfaces (pricing comparison, live documentation pages) collapse into dense, high-information layouts where Inter body type carries 14–16px copy across long-form prose, syntax-highlighted code blocks, and 3-column documentation grids.
+The Dark System positions itself at the intersection of polished marketing presentation and developer-grade density. The home and startups pages open with cinematic atmospheric heroes — soft sky-gradient backdrops with cloud illustrations on the homepage, dark teal-to-mint gradients with a rocket launch on the startups page — that feel more like a SaaS landing aesthetic than a developer tool. Then the deeper surfaces (pricing comparison, live documentation pages) collapse into dense, high-information layouts where Inter body type carries 14–16px copy across long-form prose, syntax-highlighted code blocks, and 3-column documentation grids.
 
 The brand's signature mint green ({colors.brand-green}) appears sparingly but decisively — on the hero "Get started" pill button, the green checkmark icons inside feature lists, the "Featured" pricing tier border, and active state indicators inside docs UI. Black-pill primary buttons dominate the marketing flow; white-on-dark inversions appear on dark hero bands. The signature pairing of Inter (body, headings) with Geist Mono (code blocks, inline references, type signatures) reinforces the developer-tool DNA without requiring a third typeface.
 
 **Key Characteristics:**
 - Atmospheric gradient hero bands (sky-blue to cream on homepage; teal-to-mint on startups) provide cinematic marketing presentation
-- Signature Mintlify mint green ({colors.brand-green}) reserved for accent CTAs, active states, and feature confirmations
+- Signature mint green ({colors.brand-green}) reserved for accent CTAs, active states, and feature confirmations
 - Black-pill primary buttons ({colors.primary} + `{rounded.full}`) for marketing CTAs
 - Inter for all UI prose; Geist Mono for code blocks, inline code, and type/property signatures
 - 3-column documentation layout (sidebar / prose / TOC) with dense 14px body type for long-form developer reading
@@ -467,10 +467,10 @@ The brand's signature mint green ({colors.brand-green}) appears sparingly but de
 
 ## Colors
 
-> Source pages: mintlify.com/ (homepage), /startups (program page), /pricing (comparison), /docs/components/tabs (live documentation). Token coverage was identical across all four pages.
+> Source pages: homepage, /startups (program page), /pricing (comparison), /docs/components/tabs (live documentation). Token coverage was identical across all four pages.
 
 ### Brand & Accent
-- **Mintlify Mint** ({colors.brand-green}): Signature accent — used on hero "Get started" pill button, green checkmarks in feature lists, featured pricing tier border accent, sidebar active indicator dots.
+- **Mint Accent** ({colors.brand-green}): Signature accent — used on hero "Get started" pill button, green checkmarks in feature lists, featured pricing tier border accent, sidebar active indicator dots.
 - **Deep Mint** ({colors.brand-green-deep}): Pressed/active variant of the mint accent.
 - **Soft Mint** ({colors.brand-green-soft}): Subtle background tint for success states and confirmation surfaces.
 - **Brand Tag** ({colors.brand-tag}): Documentation tag and reference color (used in `<Tabs>` JSX-style annotations and code-tag chips).
@@ -521,7 +521,7 @@ The brand uses no italic variants of either face — emphasis comes from weight 
 | `{typography.hero-display}` | 72px | 600 | 1.05 | -2px | Marketing hero display ("The intelligent Knowledge Platform") |
 | `{typography.display-lg}` | 56px | 600 | 1.10 | -1.5px | Major section opener ("Built for the intelligence age") |
 | `{typography.heading-1}` | 48px | 600 | 1.10 | -1px | Page-level headlines ("Pricing on your terms") |
-| `{typography.heading-2}` | 36px | 600 | 1.20 | -0.5px | Section headlines ("Apply to the Mintlify startup program") |
+| `{typography.heading-2}` | 36px | 600 | 1.20 | -0.5px | Section headlines ("Apply to the startup program") |
 | `{typography.heading-3}` | 28px | 600 | 1.25 | 0 | Subsection headers, "Tabs" docs page title |
 | `{typography.heading-4}` | 22px | 600 | 1.30 | 0 | Card titles, larger feature headers |
 | `{typography.heading-5}` | 18px | 600 | 1.40 | 0 | Smaller feature headers, FAQ question titles |
@@ -653,7 +653,7 @@ The radius scale is tightly disciplined — the brand never uses a corner soften
 **`pricing-card-featured`** — Highlighted pricing tier (Lift Off / featured plan).
 - Background `{colors.canvas}`, rounded `{rounded.lg}`, padding `{spacing.xxl}`, border `2px solid {colors.brand-green}`, soft brand-tinted shadow `rgba(0, 212, 164, 0.08) 0px 8px 24px`.
 
-**`testimonial-card-feature`** — Bright orange large testimonial card with photo + quote ("Cursor — Every YC batch we consistently see the top performing startups use Mintlify to build their docs.").
+**`testimonial-card-feature`** — Bright orange large testimonial card with photo + quote ("Cursor — Every YC batch we consistently see top performing startups build great docs.").
 - Background `{colors.testimonial-orange}`, text `{colors.on-dark}`, rounded `{rounded.lg}`, padding `{spacing.section}`. Photo on right, large quote in `{typography.heading-3}` left, attribution below in `{typography.body-sm-medium}`.
 
 **`testimonial-card-quote`** — Smaller white testimonial card on the startups page.
@@ -746,7 +746,7 @@ The radius scale is tightly disciplined — the brand never uses a corner soften
 
 **Top Navigation (Marketing)** — Sticky white bar with logo, link list, and right-side CTAs.
 - Background `{colors.canvas}`, height ~64px, bottom border `1px solid {colors.hairline-soft}`.
-- Left: Mintlify wordmark + horizontal link list (Solutions, Pricing, Customers, Documentation, Changelog).
+- Left: Brand wordmark + horizontal link list (Solutions, Pricing, Customers, Documentation, Changelog).
 - Right: secondary "Talk to sales" + black-pill "Get Started".
 
 **Top Navigation (Documentation)** — Compressed nav with center search-pill and right-side account/upgrade CTAs.
@@ -766,7 +766,7 @@ The radius scale is tightly disciplined — the brand never uses a corner soften
 - Background `{colors.canvas}`, rounded `{rounded.lg}`, border `1px solid {colors.hairline-soft}`, deep shadow `rgba(0, 0, 0, 0.12) 0px 24px 48px -8px`.
 - Carries a documentation page preview inside (sidebar on left, prose body, mock UI controls).
 
-**`logo-wall-item`** — Customer logo cell in 6-up trust-row grids ("Anthropic / Cognition / Mintlify / Vercel / react / Lovable", "Stripe / Block / PayPal / Compound / Auth").
+**`logo-wall-item`** — Customer logo cell in 6-up trust-row grids ("Anthropic / Cognition / Vercel / react / Lovable", "Stripe / Block / PayPal / Compound / Auth").
 - Background transparent, text `{colors.steel}`, typography `{typography.body-md-medium}`, padding `{spacing.lg}`.
 - Logos rendered as wordmarks with consistent vertical centering.
 
@@ -785,7 +785,7 @@ The radius scale is tightly disciplined — the brand never uses a corner soften
 ## Do's and Don'ts
 
 ### Do
-- Reserve `{colors.brand-green}` (Mintlify mint) for accent CTAs and active state indicators only — even one accent button per viewport carries weight
+- Reserve `{colors.brand-green}` (mint green) for accent CTAs and active state indicators only — even one accent button per viewport carries weight
 - Use `{colors.primary}` (black) as the dominant CTA on light backgrounds; switch to `button-on-dark` (white pill) on dark hero bands
 - Apply `{rounded.full}` to every button and pill; never soften pill corners
 - Pair Inter (UI prose) with Geist Mono (code) — never introduce a third typeface

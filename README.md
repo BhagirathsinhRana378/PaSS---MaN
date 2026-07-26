@@ -6,9 +6,9 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Zero--Knowledge%20Client--Side-0a0a0a?style=for-the-badge&logo=lock&logoColor=white)
 ![React](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Design](https://img.shields.io/badge/Design-Mintlify%20Dark-00d4a4?style=for-the-badge&logo=tailwindcss&logoColor=black)
+![Design](https://img.shields.io/badge/Design-Dark%20System-00d4a4?style=for-the-badge&logo=tailwindcss&logoColor=black)
 
-*Zero-Knowledge • Client-Side AES-256-GCM • Mintlify Dark Design System*
+*Zero-Knowledge • Client-Side AES-256-GCM • Modern Dark Design System*
 
 [🚀 Launch Live Vault](https://bhagirathsinhrana378.github.io/PaSS---MaN/)
 
@@ -18,7 +18,7 @@
 
 ## 🌟 Overview
 
-**PaSS-MaN** (Password & Secret Manager) is an open-source, browser-native **Zero-Knowledge Developer Vault** built for maximum privacy, speed, and aesthetic excellence. Designed around the **Mintlify Dark System** (`#0a0a0a` canvas, `#00d4a4` mint green accents, and `Geist Mono` typography), PaSS-MaN allows you to store logins, custom text notes, credit cards, Wi-Fi keys, and API secrets entirely on your local machine with military-grade client-side encryption.
+**PaSS-MaN** (Password & Secret Manager) is an open-source, browser-native **Zero-Knowledge Developer Vault** built for maximum privacy, speed, and aesthetic excellence. Designed around a **Modern Dark System** (`#0a0a0a` canvas, `#00d4a4` mint green accents, and `Geist Mono` typography), PaSS-MaN allows you to store logins, custom text notes, credit cards, Wi-Fi keys, and API secrets entirely on your local machine with military-grade client-side encryption.
 
 ---
 
@@ -49,9 +49,9 @@
 
 ---
 
-## 🎨 Design System (Mintlify Dark)
+## 🎨 Design System (Modern Dark)
 
-Built according to the official **Mintlify Design Specification**:
+Built according to modern developer vault design standards:
 - **Canvas Dark**: `#0a0a0a`
 - **Surface Cards**: `#141416` & `#1c1c1e` with `#1f1f1f` hairline borders
 - **Signature Mint Accent**: `#00d4a4` pill buttons (`rounded-full`) & active state indicators
@@ -66,7 +66,7 @@ Built according to the official **Mintlify Design Specification**:
 | **Core Framework** | React 19.x | Component-driven user interface |
 | **Build System** | Vite 7.x | Fast HMR & production bundle compiler |
 | **Cryptography** | Web Crypto API | Client-side AES-256-GCM + PBKDF2 |
-| **Styling** | Tailwind CSS v4 | Mintlify utility design system |
+| **Styling** | Tailwind CSS v4 | Dark utility design system |
 | **Icons** | Custom SVG Icons | High-contrast vector icon library |
 | **Notifications** | React-Toastify | Responsive toast notification feedback |
 
@@ -114,7 +114,7 @@ PaSS---MaN/
 ├── 📁 src/
 │   ├── 📁 components/
 │   │   ├── ExportImportModal.jsx     # JSON Backup & Restore Modal
-│   │   ├── FOOTER.jsx                # Mintlify Footer Component
+│   │   ├── FOOTER.jsx                # Footer Component
 │   │   ├── Icons.jsx                 # SVG Icon Set
 │   │   ├── MANAGER.jsx               # Main Vault Workspace & Form
 │   │   ├── MasterLockModal.jsx       # PIN Lock Modal
@@ -125,8 +125,8 @@ PaSS---MaN/
 │   │   └── crypto.js                 # Web Crypto AES-256-GCM Module
 │   ├── App.jsx                       # Root Application State & Modals
 │   ├── main.jsx                      # Entrypoint
-│   └── index.css                     # Mintlify Dark CSS Design Tokens
-├── DESIGN.md                         # Mintlify Design Specification
+│   └── index.css                     # Dark CSS Design Tokens
+├── DESIGN.md                         # Design Specification
 ├── vite.config.js                    # Vite Config (base: './')
 └── README.md                         # Documentation
 ```
@@ -147,4 +147,4 @@ PaSS---MaN/
 - GitHub: [@BhagirathsinhRana378](https://github.com/BhagirathsinhRana378)
 - Live Site: [bhagirathsinhrana378.github.io/PaSS---MaN](https://bhagirathsinhrana378.github.io/PaSS---MaN/)
 
-*Built with ❤️ using React, Vite, and the Mintlify Design System.*
+*Made by Bhagirayhsinh Rana & Google Antigravity.*

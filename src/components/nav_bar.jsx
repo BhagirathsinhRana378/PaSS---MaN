@@ -22,7 +22,7 @@ const NavBar = ({
   return (
     <nav className="h-16 bg-[#0a0a0a] border-b border-[#1f1f1f] text-white px-4 md:px-8 flex justify-between items-center sticky top-0 z-40">
       
-      {/* Mintlify Brand Mark */}
+      {/* Brand Mark */}
       <div className="flex items-center gap-3">
         <img src="/favicon.png" alt="PaSS-MaN Logo" className="w-8 h-8 rounded-lg object-cover shadow-sm border border-[#1f1f1f]" />
 

@@ -334,7 +334,7 @@ const MANAGER = ({
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       
-      {/* Mintlify Atmospheric Header */}
+      {/* Atmospheric Header */}
       <div className="text-center mb-16 py-6">
         <span className="mint-badge-green mb-3 inline-block">
           ZERO-KNOWLEDGE VAULT SUITE
@@ -347,7 +347,7 @@ const MANAGER = ({
         </p>
       </div>
 
-      {/* Mintlify Signature Feature Card */}
+      {/* Signature Feature Card */}
       <div className="mint-card p-8 mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00d4a4]/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -404,7 +404,7 @@ const MANAGER = ({
           )}
         </div>
 
-        {/* Mintlify Pill Tabs */}
+        {/* Pill Tabs */}
         <div className="flex flex-wrap gap-2 mb-6">
           <button
             type="button"
