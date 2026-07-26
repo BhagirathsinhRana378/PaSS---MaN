@@ -9,9 +9,7 @@ const FOOTER = () => {
         {/* Brand Column */}
         <div className="space-y-3 md:col-span-1">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-[#00d4a4] text-[#0a0a0a] flex items-center justify-center font-bold">
-              <IconShield className="w-3.5 h-3.5" />
-            </div>
+            <img src="/favicon.png" alt="PaSS-MaN Logo" className="w-6 h-6 rounded-md object-cover border border-[#1f1f1f]" />
             <span className="font-display font-semibold text-white text-base">PaSS-MaN</span>
           </div>
           <p className="text-xs text-[#5a5a5c] leading-relaxed">

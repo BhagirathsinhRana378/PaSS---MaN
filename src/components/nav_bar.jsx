@@ -24,9 +24,7 @@ const NavBar = ({
       
       {/* Mintlify Brand Mark */}
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-[#00d4a4] text-[#0a0a0a] flex items-center justify-center font-bold">
-          <IconShield className="w-4 h-4" />
-        </div>
+        <img src="/favicon.png" alt="PaSS-MaN Logo" className="w-8 h-8 rounded-lg object-cover shadow-sm border border-[#1f1f1f]" />
 
         <div className="flex items-center gap-2">
           <h1 className="text-lg font-display font-semibold tracking-tight text-white select-none">

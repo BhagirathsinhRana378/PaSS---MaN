@@ -353,7 +353,7 @@ const MANAGER = ({
 
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <IconShield className="w-5 h-5 text-[#00d4a4]" />
+            <img src="/favicon.png" alt="PaSS-MaN Logo" className="w-5 h-5 rounded-md object-cover" />
             <span className="text-xs uppercase font-semibold text-[#00d4a4] tracking-wider">Security Architecture</span>
           </div>
           <h3 className="text-xl md:text-2xl font-display font-semibold text-white">

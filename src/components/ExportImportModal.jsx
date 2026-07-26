@@ -60,7 +60,7 @@ const ExportImportModal = ({ isOpen, onClose, items, onImportItems }) => {
         
         <div className="flex justify-between items-center mb-4 pb-3 border-b border-[#dddddd]">
           <div className="flex items-center gap-2 font-display font-semibold text-lg text-[#181d26]">
-            <IconShield className="w-5 h-5 text-[#1b61c9]" />
+            <img src="/favicon.png" alt="PaSS-MaN Logo" className="w-5 h-5 rounded-md object-cover" />
             <span>Backup & Sync (PC / Phone)</span>
           </div>
           <button
