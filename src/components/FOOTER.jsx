@@ -55,7 +55,7 @@ const FOOTER = () => {
         <p>© {new Date().getFullYear()} PaSS-MaN Security Suite. All rights reserved.</p>
         <p className="flex items-center gap-2">
           <span>Made by</span>
-          <span className="text-[#00d4a4] font-semibold">Bhagirayhsinh Rana</span>
+          <span className="text-[#00d4a4] font-semibold">Bhagirathsinh Rana</span>
           <span>&</span>
           <span className="text-white font-semibold">Google Antigravity</span>
         </p>
